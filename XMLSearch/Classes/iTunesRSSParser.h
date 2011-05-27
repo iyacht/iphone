@@ -107,5 +107,11 @@ typedef enum {
 - (void)parsedSong:(Song *)song;
 - (void)parseError:(NSError *)error;
 - (void)addToParseDuration:(NSNumber *)duration;
+//iyacht:20110518
+- (void)infoNSDictionary:(NSDictionary *)nsDictionary;
+- (void)writeHeads:(NSDictionary *)headers;
+- (void)readAndWriteHeads;
+- (void)listTree;
+
 
 @end

@@ -71,7 +71,11 @@
     [parseFormatter setLocale:[[[NSLocale alloc] initWithLocaleIdentifier:@"US"] autorelease]];
     self.xmlData = [NSMutableData data];
     [[NSURLCache sharedURLCache] removeAllCachedResponses];
-    NSURLRequest *theRequest = [NSURLRequest requestWithURL:url];
+    //NSURLRequest *theRequest = [NSURLRequest requestWithURL:url];
+	//iyacht:20110518
+	NSMutableURLRequest *theRequest = [NSMutableURLRequest requestWithURL:url];
+	[theRequest setHTTPMethod:@"GET"];
+	[theRequest setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"]; 
     // create the connection with the request and start loading the data
     rssConnection = [[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
     [self performSelectorOnMainThread:@selector(downloadStarted) withObject:nil waitUntilDone:NO];
@@ -88,6 +92,28 @@
 }
 
 #pragma mark NSURLConnection Delegate methods
+//iyacht:20110518
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+	if (nil != response) {
+		[xmlData setLength:0];
+		NSInteger StatusCode = [(NSHTTPURLResponse*)response statusCode];
+		long long maxExpectedByteCount = [response expectedContentLength];
+		NSLog(@"HTTP: %d, max <%lld> B", StatusCode, maxExpectedByteCount);
+		//get headers
+		/*
+		NSDictionary *headers = [[(NSHTTPURLResponse*)response allHeaderFields] copy];
+		[self writeHeads:headers];
+		[headers release];
+		*/
+		//or
+		[self writeHeads:[(NSHTTPURLResponse*)response allHeaderFields]];
+		[self readAndWriteHeads];
+		[self infoNSDictionary:[(NSHTTPURLResponse*)response allHeaderFields]];
+	} else {
+		NSLog(@"nil response");
+	}
+
+}
 
 /*
  Disable caching so that each time we run this app we are starting with a clean slate. You may not want to do this in your application.

@@ -73,6 +73,7 @@ static NSUInteger kCountForNotification = 10;
 	//iyacht:20110512
     //NSURL *url = [NSURL URLWithString:@"http://localhost/~iyacht/search_engine.xml"];
 	NSURL *url = [NSURL URLWithString:@"http://yangcheng-md.local/~iyacht/search_engine.xml"];
+	//NSURL *url = [NSURL URLWithString:@"http://yangcheng-md.local/~iyacht/search_engine.xml.gz"];
     [NSThread detachNewThreadSelector:@selector(downloadAndParse:) toTarget:self withObject:url];
 }
 
@@ -113,6 +114,12 @@ static NSUInteger kCountForNotification = 10;
 }
 
 - (void)parsedSong:(Song *)song {
+	//iyacht:20110518
+		//NSString *log = [song description];
+		//NSLog(@"Song description:%@", log);
+	//or
+		//Notice Song.m - (NSString *)description
+		//NSLog(@"Song detail:%@", song);
     NSAssert2([NSThread isMainThread], @"%s at line %d called on secondary thread", __FUNCTION__, __LINE__);
     [self.parsedSongs addObject:song];
     if (self.parsedSongs.count > kCountForNotification) {
@@ -135,4 +142,40 @@ static NSUInteger kCountForNotification = 10;
     parseDuration += [duration doubleValue];
 }
 
+#pragma mark iyacht add funnction
+//iyacht:20110518
+- (void)infoNSDictionary:(NSDictionary *)nsDictionary {
+	if (nsDictionary != nil) {
+		NSArray *keys = [nsDictionary allKeys];
+		for (int i = 0; i < [keys count]; i++) {
+			NSString *key = [keys objectAtIndex:i];
+			NSLog(@"dictionary - %@: %@", key, [nsDictionary objectForKey:key]);
+		}
+	}
+}
+
+- (void)writeHeads:(NSDictionary *)headers {
+	//(gdb) po headers
+	NSString *filePath =[NSString stringWithFormat:@"%@/headers.plist",[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]];//autorelease
+	[headers writeToFile:filePath  atomically:YES];
+}
+
+- (void)readAndWriteHeads {
+	NSString *filePath =[NSString stringWithFormat:@"%@/headers.plist",[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]];//autorelease
+	NSMutableDictionary *tmpHeaders = [NSDictionary dictionaryWithContentsOfFile:filePath];
+	[tmpHeaders removeObjectForKey:@"Accept-Ranges"];
+	[tmpHeaders setObject:@"iyacht@gmail.com" forKey:@"E-Mail" ];
+	[self writeHeads:tmpHeaders];
+	[tmpHeaders release];
+}
+
+- (void)listTree {
+	NSLog(@"Absolute path for Home Directory: %@", NSHomeDirectory()); 
+	NSFileManager *fileManager = [NSFileManager defaultManager]; 
+	NSDirectoryEnumerator *dirEnumerator = [fileManager enumeratorAtPath:NSHomeDirectory()]; 
+	NSString *currPath; 
+	while (currPath = [dirEnumerator nextObject]){
+		NSLog(@"Found %@", currPath);
+	}
+}
 @end

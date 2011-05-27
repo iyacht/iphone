@@ -52,6 +52,21 @@
 @synthesize title, artist, album, releaseDate, category;
 //iyacht:20110512
 @synthesize name, display, index, icon, portal;
+/*
+description 
+- (NSString*) description;
+Availability: OpenStep
+
+Returns a string describing the receiver. The default implementation gives the class and memory location of the receiver. 
+call:
+	NSLog(@"%@", obj);
+*/
+- (NSString *)description
+{
+	return [NSString stringWithFormat:@"\nname: %@ \ndisplay: %@\nindex: %@\nicon: %@\nportal: %@", 
+			name, display, index, icon, portal];
+}
+
 - (void)dealloc {
     [title release];
     [artist release];
