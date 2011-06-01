@@ -24,6 +24,25 @@
 
 @synthesize searchs;
 
+- (void) test0 {
+	phDSearchXmlParser = [[PhDSearchXmlParser alloc] init];
+	phDSearchXmlParser.delegate = self;
+	
+	[logTextView setText:[PhDSearchXmlParser parserName]];
+	
+	[phDSearchXmlParser openAndParse:@"haha"];
+}
+
+- (void) test1:(NSUInteger)index {
+	phDMasterXmlParser = [[PhDMasterXmlParser alloc] init];
+	phDMasterXmlParser.currentMaster = index;
+	
+	[logTextView setText:[PhDMasterXmlParser parserName]];
+	
+	[phDMasterXmlParser openAndParse:@"haha"];
+	[unitTestButton setTitle:@"开始测试" forState:UIControlStateNormal];
+}
+
 - (IBAction) doUnitTestButton:(id)sender {
 	if (clearTextSwitch.on == YES) {
 		logTextView.text = nil;
@@ -41,12 +60,21 @@
     } else {
         [searchs removeAllObjects];
     }
-	phDSearchXmlParser = [[PhDSearchXmlParser alloc] init];
-	phDSearchXmlParser.delegate = self;
-	
-	[logTextView setText:[PhDSearchXmlParser parserName]];
-	
-	[phDSearchXmlParser openAndParse:@"haha"];
+
+	int testcase = (int)unitSlider.value;
+	switch (testcase) {
+		case 0:
+			[self test0];
+			break;
+
+		case 1:
+		case 2:
+		case 3:
+			[self test1:(testcase -1)];
+			break;
+		default:
+			break;
+	}
 	
 }
 
@@ -57,8 +85,8 @@
 }
 
 - (IBAction)sliderChanged:(id)sender {
-	UISlider *slider=(UISlider *)sender;
-	int progressAsInt=(int)slider.value;
+	//UISlider *slider=(UISlider *)sender;
+	int progressAsInt=(int)unitSlider.value;
 	NSString *newText=[[NSString alloc] initWithFormat:@"PhD选择测试用例：%d",progressAsInt];
 	titleLabel.text=newText;
 	[newText release];

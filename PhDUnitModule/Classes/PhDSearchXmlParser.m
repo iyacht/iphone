@@ -34,14 +34,13 @@ static NSUInteger kCountForNotification = 0;
 @implementation PhDSearchXmlParser
 
 @synthesize delegate, parsedSearchs;
-@synthesize currentString, currentSearch, xmlData, downloadAndParsePool;
+@synthesize currentString, currentSearch, xmlData;
 
 + (NSString *)parserName {
     return @"PhDSearchXmlParser";
 }
 
 - (void)openAndParse:(NSString *)path {
-	self.downloadAndParsePool = [[NSAutoreleasePool alloc] init];
 	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"search_engine" ofType:@"xml"];  
     self.xmlData = [NSMutableData dataWithContentsOfFile:filePath];  
     if (self.xmlData) { 
@@ -58,13 +57,9 @@ static NSUInteger kCountForNotification = 0;
     self.currentString = nil;
     self.xmlData = nil;
     self.currentSearch = nil;
-    [downloadAndParsePool release];
-    self.downloadAndParsePool = nil;
 }
 
 - (void)dealloc {
-	//[portal release];
-	
     [super dealloc];
 }
 
@@ -102,8 +97,6 @@ static const NSUInteger kAutoreleasePoolPurgeFrequency = 20;
     // size of the objects being parsed. The goal is to keep the autorelease pool from growing too large, but 
     // taking this action too frequently would be wasteful and reduce performance.
     if (countOfParsedSearchs == kAutoreleasePoolPurgeFrequency) {
-        [downloadAndParsePool release];
-        self.downloadAndParsePool = [[NSAutoreleasePool alloc] init];
         countOfParsedSearchs = 0;
     }
 }

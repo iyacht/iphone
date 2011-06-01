@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PhDSearchXmlParser.h"
-
+#import "PhDMasterXmlParser.h"
 
 @interface PhDUnitModuleViewController : UIViewController <PhDSearchXmlParserDelegate> {
 
@@ -20,6 +20,8 @@
 	
 	PhDSearchXmlParser *phDSearchXmlParser;
 	NSMutableArray *searchs;
+	
+	PhDMasterXmlParser *phDMasterXmlParser;
 	
 }
 

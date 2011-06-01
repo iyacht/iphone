@@ -18,6 +18,7 @@
 		5CE583B3139488B500048318 /* PhDSearchXmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE583B2139488B500048318 /* PhDSearchXmlParser.m */; };
 		5CE58442139494D200048318 /* search_engine.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5CE58441139494D200048318 /* search_engine.xml */; };
 		5CE586111394E22A00048318 /* ui_master.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5CE586101394E22A00048318 /* ui_master.xml */; };
+		5CE639341395D82E00D96D38 /* PhDMasterXmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE639331395D82E00D96D38 /* PhDMasterXmlParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,8 @@
 		5CE583B2139488B500048318 /* PhDSearchXmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhDSearchXmlParser.m; sourceTree = "<group>"; };
 		5CE58441139494D200048318 /* search_engine.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = search_engine.xml; sourceTree = "<group>"; };
 		5CE586101394E22A00048318 /* ui_master.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ui_master.xml; sourceTree = "<group>"; };
+		5CE639321395D82E00D96D38 /* PhDMasterXmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhDMasterXmlParser.h; sourceTree = "<group>"; };
+		5CE639331395D82E00D96D38 /* PhDMasterXmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhDMasterXmlParser.m; sourceTree = "<group>"; wrapsLines = 1; };
 		8D1107310486CEB800E47090 /* PhDUnitModule-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhDUnitModule-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +66,8 @@
 				28D7ACF70DDB3853001CB0EB /* PhDUnitModuleViewController.m */,
 				5CE583B1139488B500048318 /* PhDSearchXmlParser.h */,
 				5CE583B2139488B500048318 /* PhDSearchXmlParser.m */,
+				5CE639321395D82E00D96D38 /* PhDMasterXmlParser.h */,
+				5CE639331395D82E00D96D38 /* PhDMasterXmlParser.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -185,6 +190,7 @@
 				1D3623260D0F684500981E51 /* PhDUnitModuleAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* PhDUnitModuleViewController.m in Sources */,
 				5CE583B3139488B500048318 /* PhDSearchXmlParser.m in Sources */,
+				5CE639341395D82E00D96D38 /* PhDMasterXmlParser.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

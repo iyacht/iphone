@@ -41,14 +41,12 @@
 @interface PhDSearchXmlParser : NSObject <NSXMLParserDelegate> {
     id <PhDSearchXmlParserDelegate> delegate;
     NSMutableArray *parsedSearchs;
-	
+
 	NSMutableString *currentString;
     Search *currentSearch;
     BOOL storingCharacters;
     NSMutableData *xmlData;
-    //BOOL done;
     NSUInteger countOfParsedSearchs;
-    NSAutoreleasePool *downloadAndParsePool;
 }
 
 @property (nonatomic, assign) id <PhDSearchXmlParserDelegate> delegate;
@@ -57,7 +55,6 @@
 @property (nonatomic, retain) NSMutableString *currentString;
 @property (nonatomic, retain) Search *currentSearch;
 @property (nonatomic, retain) NSMutableData *xmlData;
-@property (nonatomic, assign) NSAutoreleasePool *downloadAndParsePool;
 
 + (NSString *)parserName;
 - (void)openAndParse:(NSString *)path;
