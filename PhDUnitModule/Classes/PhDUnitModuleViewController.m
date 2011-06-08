@@ -7,7 +7,6 @@
 //
 
 #import "PhDUnitModuleViewController.h"
-#import "PhDSearchXmlParser.h"
 
 #define MINI_SLIDERVALUE 0
 #define MAX_SLIDERVALUE 5
@@ -43,6 +42,15 @@
 	[unitTestButton setTitle:@"开始测试" forState:UIControlStateNormal];
 }
 
+- (void) test2 {
+	phDinXmlStream = [[PhDinXmlStream alloc] init];
+	//phDSearchXmlParser.delegate = self;
+	
+	[logTextView setText:[PhDinXmlStream parserName]];
+	
+	[phDinXmlStream openAndParse:@"haha"];
+}
+
 - (IBAction) doUnitTestButton:(id)sender {
 	if (clearTextSwitch.on == YES) {
 		logTextView.text = nil;
@@ -66,11 +74,13 @@
 		case 0:
 			[self test0];
 			break;
-
 		case 1:
 		case 2:
 		case 3:
 			[self test1:(testcase -1)];
+			break;
+		case 4:
+			[self test2];
 			break;
 		default:
 			break;
