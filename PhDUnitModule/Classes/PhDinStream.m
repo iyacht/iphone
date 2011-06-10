@@ -8,35 +8,29 @@
 
 #import "PhDinStream.h"
 
-
 @implementation PhDinStream
 
 @synthesize stream;
 @synthesize needLength;
 
-/*
-- (id) init {
-    self = [super init];
-	if (self)
-	{
-		stream = nil;
-		iterator = 0;
-	}
-	
-	return self;
++ (NSString *)parserName {
+	return @"Base Class";
 }
-*/
-- (void) open:(NSData*)str {
-	if (stream != str)
+
+- (void)parser:(NSData *)Data {
+	if (stream != Data)
 	{
-		stream = [str retain];
+		if (nil != stream) {
+			[stream release];
+		}
+		stream = [Data retain];
 	}
 	
 	iterator = 0;
 }
 
 - (void) close {
-	if (stream != nil)
+	if (nil != stream)
 	{
 		[stream release];
 	}
@@ -167,10 +161,14 @@
 	} else {
 		return nil;
 	}
-	
 }
 
-- (BOOL)parse {
-	return NO;
+- (void)dealloc {
+	if (nil != stream)
+	{
+		[stream release];
+	}
+
+	[super dealloc];
 }
 @end

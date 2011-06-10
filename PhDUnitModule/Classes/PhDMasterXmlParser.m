@@ -21,11 +21,10 @@ static NSString *kName_WebSites = @"网址大全";
     return @"PhDMasterXmlParser";
 }
 
-- (void)openAndParse:(NSString *)path {
+- (void)unitTest:(NSString *)path {
 	masterArray = [[NSArray alloc] initWithObjects:kName_InternetSites,kName_MobileCoolSites,kName_WebSites,nil];
-	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ui_master" ofType:@"xml"];  
-    self.xmlData = [NSMutableData dataWithContentsOfFile:filePath];  
-    if (self.xmlData) {
+    xmlData = [NSMutableData dataWithContentsOfFile:path];  
+    if (nil != xmlData) {
 		htmlData = [[NSMutableString alloc] init];
 		[htmlData appendFormat:
 		 @"<!DOCTYPE html PUBLIC \"-//WAPFORUM//DTD XHTML Mobile 1.0//EN\" \"http://www.wapforum.org/DTD/xhtml-mobile10.dtd\"><html xmlns=\"http://www.w3.org/1999/xhtml\"><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /><title>%@</title></head><body>",[masterArray  objectAtIndex: currentMaster]];

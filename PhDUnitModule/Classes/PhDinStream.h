@@ -7,11 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "PhDtypeDef.h"
 
-typedef unsigned char PhDByte;
-typedef unsigned short PhDShort;
-typedef unsigned long PhDInt;
-typedef NSString PhDUTF;
 @interface PhDinStream : NSObject {
 	NSData* stream;
 	NSUInteger iterator;
@@ -21,11 +18,15 @@ typedef NSString PhDUTF;
 @property (readonly) NSData* stream;
 @property (readonly) NSUInteger needLength;
 
-- (void) open:(NSData*)str;
++ (NSString *)parserName;
+- (void)parser:(NSData *)Data;
+
 - (void) close;
 - (NSUInteger) leftLength;
 - (void) skip:(NSInteger)num;
 - (void) revert:(NSInteger)num;
+
+
 
 - (PhDByte) readByte;
 - (PhDShort) readShort;

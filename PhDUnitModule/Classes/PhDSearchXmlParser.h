@@ -57,7 +57,7 @@
 @property (nonatomic, retain) NSMutableData *xmlData;
 
 + (NSString *)parserName;
-- (void)openAndParse:(NSString *)path;
+- (void)unitTest:(NSString *)path;
 - (void)parseEnded;
 - (void)parsedSearch:(Search *)search;
 @end

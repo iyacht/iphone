@@ -15,8 +15,9 @@
 
 @property (nonatomic, retain) NSMutableData *xmlData;
 
-+ (NSString *)parserName;
-- (void)openAndParse:(NSString *)path;
+- (void)unitTest:(NSString *)path;
+- (BOOL)parserInternal;
+
 - (void)addKown:(NSUInteger)seg;
 - (void)addLongKown:(NSUInteger)seg;
 - (void)addUnkown:(NSUInteger)seg;

@@ -24,31 +24,33 @@
 @synthesize searchs;
 
 - (void) test0 {
+	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"search_engine" ofType:@"xml"];
 	phDSearchXmlParser = [[PhDSearchXmlParser alloc] init];
 	phDSearchXmlParser.delegate = self;
 	
 	[logTextView setText:[PhDSearchXmlParser parserName]];
 	
-	[phDSearchXmlParser openAndParse:@"haha"];
+	[phDSearchXmlParser unitTest:filePath];
+	[phDSearchXmlParser release];
 }
 
 - (void) test1:(NSUInteger)index {
+	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ui_master" ofType:@"xml"];
 	phDMasterXmlParser = [[PhDMasterXmlParser alloc] init];
 	phDMasterXmlParser.currentMaster = index;
 	
 	[logTextView setText:[PhDMasterXmlParser parserName]];
 	
-	[phDMasterXmlParser openAndParse:@"haha"];
+	[phDMasterXmlParser unitTest:filePath];
 	[unitTestButton setTitle:@"开始测试" forState:UIControlStateNormal];
 }
 
 - (void) test2 {
-	phDinXmlStream = [[PhDinXmlStream alloc] init];
-	//phDSearchXmlParser.delegate = self;
-	
-	[logTextView setText:[PhDinXmlStream parserName]];
-	
-	[phDinXmlStream openAndParse:@"haha"];
+	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"phd"];
+	phDinXmlStream = [[PhDinXmlStream alloc] init];	
+	[logTextView setText:[PhDinXmlStream parserName]];	
+	[phDinXmlStream unitTest:filePath];
+	[phDinXmlStream release];
 }
 
 - (IBAction) doUnitTestButton:(id)sender {

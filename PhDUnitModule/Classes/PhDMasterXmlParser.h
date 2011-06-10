@@ -26,5 +26,5 @@
 @property (nonatomic, assign) NSUInteger currentMaster;
 
 + (NSString *)parserName;
-- (void)openAndParse:(NSString *)path;
+- (void)unitTest:(NSString *)path;
 @end

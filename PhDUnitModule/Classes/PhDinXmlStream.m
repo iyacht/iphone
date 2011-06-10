@@ -16,12 +16,14 @@
     return @"PhDinXmlStream";
 }
 
-- (void)openAndParse:(NSString *)path {
-	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"phd"];  
-    self.xmlData = [NSMutableData dataWithContentsOfFile:filePath];  
-    if (self.xmlData) { 
-		[self open:xmlData];
-		[self parse];
+- (void)unitTest:(NSString *)path {
+    xmlData = [NSMutableData dataWithContentsOfFile:path];  
+    if (nil != xmlData) { 
+		[self parser:xmlData];
+		BOOL res = [self parserInternal];
+		if (NO == res) {
+			NSLog(@"Left:%d",[self leftLength]);
+		}
 		[self close];
     }
 	
@@ -47,13 +49,15 @@
 #define TAG_BLOCK_END 98
 
 typedef PhDByte PhDTag;
-- (BOOL)parse {
+- (BOOL)parserInternal {
 	PhDTag iTag = 0;
 	NSUInteger seg = 0;
 	while (1)
 	{
 		if ([self leftLength] < 5)
 		{
+			if (0 == [self leftLength])
+				return YES;
 			return NO;
 		}
 		
@@ -216,5 +220,9 @@ NSUInteger length = segmentsize
 	
 	NSLog(@"%@",phDStreamBg);
 	[phDStreamBg release];
+}
+
+- (void)parser:(NSData *)Data {
+	[super parser:Data];
 }
 @end

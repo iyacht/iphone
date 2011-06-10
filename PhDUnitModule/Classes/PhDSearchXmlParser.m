@@ -40,10 +40,9 @@ static NSUInteger kCountForNotification = 0;
     return @"PhDSearchXmlParser";
 }
 
-- (void)openAndParse:(NSString *)path {
-	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"search_engine" ofType:@"xml"];  
-    self.xmlData = [NSMutableData dataWithContentsOfFile:filePath];  
-    if (self.xmlData) { 
+- (void)unitTest:(NSString *)path {  
+    xmlData = [NSMutableData dataWithContentsOfFile:path];  
+    if (nil != xmlData) { 
 		parsedSearchs = [[NSMutableArray alloc] init];
 		NSLog(@"Count %d",self.parsedSearchs.count);
 		NSXMLParser *parser = [[NSXMLParser alloc] initWithData:xmlData];

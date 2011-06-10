@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "PhDtypeDef.h"
 
 @interface PhDoutStream : NSObject {
-
+	NSMutableData* stream;
 }
 
 @end
