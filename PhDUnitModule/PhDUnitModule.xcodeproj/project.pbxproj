@@ -20,10 +20,18 @@
 		5C049844139E136D00470E69 /* PhDinXmlStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C049843139E136D00470E69 /* PhDinXmlStream.m */; };
 		5C0A9985139F400E00AF853D /* PhDStreamElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0A9984139F400E00AF853D /* PhDStreamElement.m */; };
 		5C0A9ADC139F77F300AF853D /* sample.phd in Resources */ = {isa = PBXBuildFile; fileRef = 5C0A9ADB139F77F300AF853D /* sample.phd */; };
+		5C68909113A214830096BD15 /* PhDinAllStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C68909013A214830096BD15 /* PhDinAllStream.m */; };
+		5C68909313A215670096BD15 /* sample.pha in Resources */ = {isa = PBXBuildFile; fileRef = 5C68909213A215670096BD15 /* sample.pha */; };
 		5CE583B3139488B500048318 /* PhDSearchXmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE583B2139488B500048318 /* PhDSearchXmlParser.m */; };
 		5CE58442139494D200048318 /* search_engine.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5CE58441139494D200048318 /* search_engine.xml */; };
 		5CE586111394E22A00048318 /* ui_master.xml in Resources */ = {isa = PBXBuildFile; fileRef = 5CE586101394E22A00048318 /* ui_master.xml */; };
 		5CE639341395D82E00D96D38 /* PhDMasterXmlParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CE639331395D82E00D96D38 /* PhDMasterXmlParser.m */; };
+		5CF09D5813A5B36200B79614 /* PhDinInitStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF09D5713A5B36200B79614 /* PhDinInitStream.m */; };
+		5CF09DFE13A5CEF100B79614 /* PhDinHeadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF09DFD13A5CEF100B79614 /* PhDinHeadStream.m */; };
+		5CF09E0913A5D04700B79614 /* PhDinFlagStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF09E0813A5D04700B79614 /* PhDinFlagStream.m */; };
+		5CF09EDA13A5DD2100B79614 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF09ED913A5DD2100B79614 /* libz.dylib */; };
+		5CF09FA713A5F36E00B79614 /* PhDinPictStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF09FA613A5F36E00B79614 /* PhDinPictStream.m */; };
+		5CF09FAD13A5F46A00B79614 /* PhDinPHeadStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CF09FAC13A5F46A00B79614 /* PhDinPHeadStream.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,12 +57,26 @@
 		5C0A9984139F400E00AF853D /* PhDStreamElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhDStreamElement.m; sourceTree = "<group>"; };
 		5C0A9ADB139F77F300AF853D /* sample.phd */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.phd; sourceTree = "<group>"; };
 		5C688FB413A1F9780096BD15 /* PhDtypeDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhDtypeDef.h; sourceTree = "<group>"; };
+		5C68908F13A214830096BD15 /* PhDinAllStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhDinAllStream.h; sourceTree = "<group>"; };
+		5C68909013A214830096BD15 /* PhDinAllStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhDinAllStream.m; sourceTree = "<group>"; };
+		5C68909213A215670096BD15 /* sample.pha */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.pha; sourceTree = "<group>"; };
 		5CE583B1139488B500048318 /* PhDSearchXmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhDSearchXmlParser.h; sourceTree = "<group>"; };
 		5CE583B2139488B500048318 /* PhDSearchXmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhDSearchXmlParser.m; sourceTree = "<group>"; };
 		5CE58441139494D200048318 /* search_engine.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = search_engine.xml; sourceTree = "<group>"; };
 		5CE586101394E22A00048318 /* ui_master.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = ui_master.xml; sourceTree = "<group>"; };
 		5CE639321395D82E00D96D38 /* PhDMasterXmlParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhDMasterXmlParser.h; sourceTree = "<group>"; };
 		5CE639331395D82E00D96D38 /* PhDMasterXmlParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhDMasterXmlParser.m; sourceTree = "<group>"; wrapsLines = 1; };
+		5CF09D5613A5B36200B79614 /* PhDinInitStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhDinInitStream.h; sourceTree = "<group>"; };
+		5CF09D5713A5B36200B79614 /* PhDinInitStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhDinInitStream.m; sourceTree = "<group>"; };
+		5CF09DFC13A5CEF100B79614 /* PhDinHeadStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhDinHeadStream.h; sourceTree = "<group>"; };
+		5CF09DFD13A5CEF100B79614 /* PhDinHeadStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhDinHeadStream.m; sourceTree = "<group>"; };
+		5CF09E0713A5D04700B79614 /* PhDinFlagStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhDinFlagStream.h; sourceTree = "<group>"; };
+		5CF09E0813A5D04700B79614 /* PhDinFlagStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhDinFlagStream.m; sourceTree = "<group>"; };
+		5CF09ED913A5DD2100B79614 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		5CF09FA513A5F36E00B79614 /* PhDinPictStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhDinPictStream.h; sourceTree = "<group>"; };
+		5CF09FA613A5F36E00B79614 /* PhDinPictStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhDinPictStream.m; sourceTree = "<group>"; };
+		5CF09FAB13A5F46A00B79614 /* PhDinPHeadStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhDinPHeadStream.h; sourceTree = "<group>"; };
+		5CF09FAC13A5F46A00B79614 /* PhDinPHeadStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhDinPHeadStream.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* PhDUnitModule-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "PhDUnitModule-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +88,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				5CF09EDA13A5DD2100B79614 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +115,18 @@
 				5C0A9983139F400E00AF853D /* PhDStreamElement.h */,
 				5C0A9984139F400E00AF853D /* PhDStreamElement.m */,
 				5C688FB413A1F9780096BD15 /* PhDtypeDef.h */,
+				5C68908F13A214830096BD15 /* PhDinAllStream.h */,
+				5C68909013A214830096BD15 /* PhDinAllStream.m */,
+				5CF09D5613A5B36200B79614 /* PhDinInitStream.h */,
+				5CF09D5713A5B36200B79614 /* PhDinInitStream.m */,
+				5CF09DFC13A5CEF100B79614 /* PhDinHeadStream.h */,
+				5CF09DFD13A5CEF100B79614 /* PhDinHeadStream.m */,
+				5CF09E0713A5D04700B79614 /* PhDinFlagStream.h */,
+				5CF09E0813A5D04700B79614 /* PhDinFlagStream.m */,
+				5CF09FA513A5F36E00B79614 /* PhDinPictStream.h */,
+				5CF09FA613A5F36E00B79614 /* PhDinPictStream.m */,
+				5CF09FAB13A5F46A00B79614 /* PhDinPHeadStream.h */,
+				5CF09FAC13A5F46A00B79614 /* PhDinPHeadStream.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -128,6 +163,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				5C68909213A215670096BD15 /* sample.pha */,
 				5C0A9ADB139F77F300AF853D /* sample.phd */,
 				5CE586101394E22A00048318 /* ui_master.xml */,
 				5CE58441139494D200048318 /* search_engine.xml */,
@@ -141,6 +177,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5CF09ED913A5DD2100B79614 /* libz.dylib */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
@@ -202,6 +239,7 @@
 				5CE58442139494D200048318 /* search_engine.xml in Resources */,
 				5CE586111394E22A00048318 /* ui_master.xml in Resources */,
 				5C0A9ADC139F77F300AF853D /* sample.phd in Resources */,
+				5C68909313A215670096BD15 /* sample.pha in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +259,12 @@
 				5C0497FE139DCD5100470E69 /* PhDoutStream.m in Sources */,
 				5C049844139E136D00470E69 /* PhDinXmlStream.m in Sources */,
 				5C0A9985139F400E00AF853D /* PhDStreamElement.m in Sources */,
+				5C68909113A214830096BD15 /* PhDinAllStream.m in Sources */,
+				5CF09D5813A5B36200B79614 /* PhDinInitStream.m in Sources */,
+				5CF09DFE13A5CEF100B79614 /* PhDinHeadStream.m in Sources */,
+				5CF09E0913A5D04700B79614 /* PhDinFlagStream.m in Sources */,
+				5CF09FA713A5F36E00B79614 /* PhDinPictStream.m in Sources */,
+				5CF09FAD13A5F46A00B79614 /* PhDinPHeadStream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

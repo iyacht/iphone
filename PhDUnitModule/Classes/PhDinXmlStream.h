@@ -10,13 +10,9 @@
 #import "PhDinStream.h"
 
 @interface PhDinXmlStream : PhDinStream {
-    NSMutableData *xmlData;
 }
 
-@property (nonatomic, retain) NSMutableData *xmlData;
-
 - (void)unitTest:(NSString *)path;
-- (BOOL)parserInternal;
 
 - (void)addKown:(NSUInteger)seg;
 - (void)addLongKown:(NSUInteger)seg;

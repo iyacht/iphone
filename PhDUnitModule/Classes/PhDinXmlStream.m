@@ -10,25 +10,18 @@
 #import "PhDStreamElement.h"
 
 @implementation PhDinXmlStream
-@synthesize xmlData;
 
 + (NSString *)parserName {
     return @"PhDinXmlStream";
 }
 
 - (void)unitTest:(NSString *)path {
-    xmlData = [NSMutableData dataWithContentsOfFile:path];  
+    NSMutableData *xmlData = [NSMutableData dataWithContentsOfFile:path];  
     if (nil != xmlData) { 
 		[self parser:xmlData];
-		BOOL res = [self parserInternal];
-		if (NO == res) {
-			NSLog(@"Left:%d",[self leftLength]);
-		}
-		[self close];
     }
 	
 	[xmlData release];
-    self.xmlData = nil;
 }
 
 #define TAG_PAGE 16
@@ -224,5 +217,14 @@ NSUInteger length = segmentsize
 
 - (void)parser:(NSData *)Data {
 	[super parser:Data];
+	BOOL res = [self parserInternal];
+	if (NO == res) {
+		NSLog(@"Left:%d",[self leftLength]);
+	}
+	[self close];
+}
+
+- (void)dealloc {
+	[super dealloc];
 }
 @end

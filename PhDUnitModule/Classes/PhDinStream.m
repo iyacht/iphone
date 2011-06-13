@@ -29,6 +29,10 @@
 	iterator = 0;
 }
 
+- (BOOL)parserInternal {
+	return YES;
+}
+
 - (void) close {
 	if (nil != stream)
 	{

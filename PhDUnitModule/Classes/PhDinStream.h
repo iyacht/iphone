@@ -20,13 +20,12 @@
 
 + (NSString *)parserName;
 - (void)parser:(NSData *)Data;
+- (BOOL)parserInternal;
 
 - (void) close;
 - (NSUInteger) leftLength;
 - (void) skip:(NSInteger)num;
 - (void) revert:(NSInteger)num;
-
-
 
 - (PhDByte) readByte;
 - (PhDShort) readShort;
@@ -37,6 +36,4 @@
 - (PhDShort) readShortEx:(NSUInteger *)len;
 - (PhDInt) readLongEx:(NSUInteger *)len;
 - (PhDUTF *) readUTF8StringEx:(NSUInteger *)len;
-
-- (BOOL)parse;
 @end

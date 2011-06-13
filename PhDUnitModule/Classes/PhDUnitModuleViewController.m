@@ -10,7 +10,7 @@
 
 #define MINI_SLIDERVALUE 0
 #define MAX_SLIDERVALUE 5
-#define CUR_SLIDERVALUE 1
+#define CUR_SLIDERVALUE 4
 
 @implementation PhDUnitModuleViewController
 
@@ -46,11 +46,19 @@
 }
 
 - (void) test2 {
+#if 0
 	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"phd"];
 	phDinXmlStream = [[PhDinXmlStream alloc] init];	
 	[logTextView setText:[PhDinXmlStream parserName]];	
 	[phDinXmlStream unitTest:filePath];
 	[phDinXmlStream release];
+#else
+	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"pha"];
+	phDinAllStream = [[PhDinAllStream alloc] init];	
+	[logTextView setText:[PhDinAllStream parserName]];	
+	[phDinAllStream unitTest:filePath];
+	[phDinAllStream release];
+#endif
 }
 
 - (IBAction) doUnitTestButton:(id)sender {
@@ -143,8 +151,8 @@
 - (void)viewDidLoad {
 	titleLabel.textAlignment = UITextAlignmentCenter;
 	titleLabel.font = [UIFont fontWithName:@"Verdana" size:20];
-	NSString *newText=[[NSString alloc] initWithFormat:@"PhD选择测试用例：%d",CUR_SLIDERVALUE];
-	titleLabel.text=newText;
+	NSString *newText = [[NSString alloc] initWithFormat:@"PhD选择测试用例：%d",CUR_SLIDERVALUE];
+	titleLabel.text = newText;
 	[newText release];
 	
 	unitSlider.minimumValue = MINI_SLIDERVALUE;
