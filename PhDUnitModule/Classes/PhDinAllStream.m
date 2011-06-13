@@ -112,7 +112,7 @@
 		}
 		else if (flag == 0x64)//picture
 		{
-			[self setiASStatus:PhDiASPHead setNeedLenth:1];
+			[self setiASStatus:PhDiASPHead setNeedLenth:4];
 		}
 		else
 		{
@@ -164,6 +164,8 @@
 	NSUInteger start = 0;
 	BOOL res = YES;
 	while (res) {
+		while (PhDiASEnd == phDiASStatus)
+			return;
 		[self PrintStatus:phDiASStatus];
 		while (PhDiASEnd != phDiASStatus) {
 			if (Data.length >= [self needLength]) {
@@ -185,8 +187,6 @@
 				break;
 			}
 		}
-		while (PhDiASEnd == phDiASStatus)
-			return;
 	}
 }
 

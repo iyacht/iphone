@@ -18,9 +18,9 @@
 		PhDByte reserver = [self readByte];
 		//dump image
 		totalData = totalData - 9 - OneImageLength;
-		NSLog(@"picDataID:%d\nOneImageLength:%d\nreserver:%d\n",picDataID, OneImageLength, reserver);
+		[self skip:OneImageLength];
+		NSLog(@"picDataID:%08X\nOneImageLength:%d\nreserver:%d\n",picDataID, OneImageLength, reserver);
 	}
-
 	
 	return YES;
 }
