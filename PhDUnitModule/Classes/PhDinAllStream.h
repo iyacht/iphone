@@ -13,6 +13,7 @@
 #import "PhDinFlagStream.h"
 #import "PhDinXmlStream.h"
 #import "PhDinPHeadStream.h"
+#import "PhDinPInfoStream.h"
 #import "PhDinPictStream.h"
 
 typedef enum
@@ -24,6 +25,7 @@ typedef enum
 	PhDiASUi,
 	PhDiASXml,
 	PhDiASPHead,
+	PhDiASPInfo,
 	PhDiASPict,
 	PhDiASEnd
 } PhDiASStatus;
@@ -32,7 +34,8 @@ typedef enum
 	<PhDinInitStreamDelegate, 
 	PhDinHeadStreamDelegate, 
 	PhDinFlagStreamDelegate,
-	PhDinPHeadStreamDelegate> {
+	PhDinPHeadStreamDelegate,
+	PhDinPInfoStreamDelegate> {
 	PhDiASStatus phDiASStatus;
 	NSMutableData *cacheData;
 	
@@ -44,6 +47,8 @@ typedef enum
 		
 	PhDByte flag;
 	PhDInt totalData;
+		
+	PhDInt tmpImageLength;
 }
 
 //@property (nonatomic, assign) PhDInt totalKB;

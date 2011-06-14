@@ -8,20 +8,22 @@
 
 #import "PhDinPictStream.h"
 
-
+static NSUInteger PhDimageNumber = -1;
 @implementation PhDinPictStream
+- (NSUInteger) getImageNumber {
+	PhDimageNumber = PhDimageNumber + 1;
+	if (0xEFFFFFFF ==PhDimageNumber) {
+		PhDimageNumber = 0;
+	}
+	return PhDimageNumber;
+}
 
 - (BOOL)parserInternal {
-	while (totalData) {
-		PhDInt picDataID = [self readLong];
-		PhDInt OneImageLength = [self readLong];
-		PhDByte reserver = [self readByte];
-		//dump image
-		totalData = totalData - 9 - OneImageLength;
-		[self skip:OneImageLength];
-		NSLog(@"picDataID:%08X\nOneImageLength:%d\nreserver:%d\n",picDataID, OneImageLength, reserver);
-	}
-	
+	NSUInteger imageNumber = [self getImageNumber];
+	NSString *fileName =[NSString stringWithFormat:@"%@/%08d.jpg",[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"],imageNumber];//autorelease
+	//dump image
+	[stream writeToFile:fileName atomically:NO];
+
 	return YES;
 }
 

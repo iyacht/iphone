@@ -42,6 +42,7 @@
 	[cacheData setLength:0];
 }
 
+#define TAG_IMAGE 100
 - (BOOL)parserInternal {
 	if (PhDiASInit == phDiASStatus) {
 		PhDinInitStream *phDinInitStream = [[PhDinInitStream alloc] init];
@@ -78,13 +79,23 @@
 		phDinPHeadStream.delegate = self;
 		[phDinPHeadStream parser:cacheData];
 		
-		[self setiASStatus:PhDiASPict setNeedLenth:totalData];
+		[self setiASStatus:PhDiASPInfo setNeedLenth:9];
+		return YES;
+	} else if (PhDiASPInfo == phDiASStatus) {
+		PhDinPInfoStream *phDinPInfoStream = [[PhDinPInfoStream alloc] init];
+		phDinPInfoStream.delegate = self;
+		[phDinPInfoStream parser:cacheData];
+		[self setiASStatus:PhDiASPict setNeedLenth:tmpImageLength];
 		return YES;
 	} else if (PhDiASPict == phDiASStatus) {
 		PhDinPictStream *phDinPictStream = [[PhDinPictStream alloc] init];
-		[phDinPictStream setTotalData:totalData];
 		[phDinPictStream parser:cacheData];
-		[self setiASStatus:PhDiASEnd setNeedLenth:totalData];
+		totalData = totalData - 9 - tmpImageLength;
+		if (totalData) {
+			[self setiASStatus:PhDiASPInfo setNeedLenth:9];
+		} else {
+			[self setiASStatus:PhDiASEnd setNeedLenth:0];
+		}		
 		return YES;
 	} else if (PhDiASFlag == phDiASStatus) {
 		PhDinFlagStream *phDinFlagStream = [[PhDinFlagStream alloc] init];
@@ -110,7 +121,7 @@
 		{
 			[self setiASStatus:PhDiASXml setNeedLenth:compressLength];
 		}
-		else if (flag == 0x64)//picture
+		else if (flag == TAG_IMAGE)//picture
 		{
 			[self setiASStatus:PhDiASPHead setNeedLenth:4];
 		}
@@ -147,6 +158,9 @@
 			break;
 		case PhDiASPHead:
 			NSLog(@"%@",@"PhDiASPHead");
+			break;
+		case PhDiASPInfo:
+			NSLog(@"%@",@"PhDiASPInfo");
 			break;
 		case PhDiASPict:
 			NSLog(@"%@",@"PhDiASPict");
@@ -222,6 +236,10 @@
 	totalData = iTotalData;
 }
 
+#pragma mark PhDinPHeadStreamDelegate
+- (void)setImageLength:(PhDInt)iImageLength {
+	tmpImageLength = iImageLength;
+}
 #pragma mark gzip interface
 - (NSData *)decompress:(NSData *)Data
 {

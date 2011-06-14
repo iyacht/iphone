@@ -18,6 +18,7 @@
 		5C0497F9139DCD3700470E69 /* PhDinStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0497F8139DCD3700470E69 /* PhDinStream.m */; };
 		5C0497FE139DCD5100470E69 /* PhDoutStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0497FD139DCD5100470E69 /* PhDoutStream.m */; };
 		5C049844139E136D00470E69 /* PhDinXmlStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C049843139E136D00470E69 /* PhDinXmlStream.m */; };
+		5C0639D513A6FBC0006767EC /* PhDinPInfoStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0639D413A6FBC0006767EC /* PhDinPInfoStream.m */; };
 		5C0A9985139F400E00AF853D /* PhDStreamElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C0A9984139F400E00AF853D /* PhDStreamElement.m */; };
 		5C0A9ADC139F77F300AF853D /* sample.phd in Resources */ = {isa = PBXBuildFile; fileRef = 5C0A9ADB139F77F300AF853D /* sample.phd */; };
 		5C68909113A214830096BD15 /* PhDinAllStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C68909013A214830096BD15 /* PhDinAllStream.m */; };
@@ -53,6 +54,8 @@
 		5C0497FD139DCD5100470E69 /* PhDoutStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhDoutStream.m; sourceTree = "<group>"; };
 		5C049842139E136D00470E69 /* PhDinXmlStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhDinXmlStream.h; sourceTree = "<group>"; };
 		5C049843139E136D00470E69 /* PhDinXmlStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhDinXmlStream.m; sourceTree = "<group>"; };
+		5C0639D313A6FBC0006767EC /* PhDinPInfoStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhDinPInfoStream.h; sourceTree = "<group>"; };
+		5C0639D413A6FBC0006767EC /* PhDinPInfoStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhDinPInfoStream.m; sourceTree = "<group>"; };
 		5C0A9983139F400E00AF853D /* PhDStreamElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhDStreamElement.h; sourceTree = "<group>"; };
 		5C0A9984139F400E00AF853D /* PhDStreamElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhDStreamElement.m; sourceTree = "<group>"; };
 		5C0A9ADB139F77F300AF853D /* sample.phd */ = {isa = PBXFileReference; lastKnownFileType = file; path = sample.phd; sourceTree = "<group>"; };
@@ -127,6 +130,8 @@
 				5CF09FA613A5F36E00B79614 /* PhDinPictStream.m */,
 				5CF09FAB13A5F46A00B79614 /* PhDinPHeadStream.h */,
 				5CF09FAC13A5F46A00B79614 /* PhDinPHeadStream.m */,
+				5C0639D313A6FBC0006767EC /* PhDinPInfoStream.h */,
+				5C0639D413A6FBC0006767EC /* PhDinPInfoStream.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -265,6 +270,7 @@
 				5CF09E0913A5D04700B79614 /* PhDinFlagStream.m in Sources */,
 				5CF09FA713A5F36E00B79614 /* PhDinPictStream.m in Sources */,
 				5CF09FAD13A5F46A00B79614 /* PhDinPHeadStream.m in Sources */,
+				5C0639D513A6FBC0006767EC /* PhDinPInfoStream.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
