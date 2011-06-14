@@ -8,26 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "PhDSearchXmlParser.h"
-#import "PhDMasterXmlParser.h"
-//#import "PhDinXmlStream.h"
-#import "PhDinAllStream.h"
-
 @interface PhDUnitModuleViewController : UIViewController <PhDSearchXmlParserDelegate> {
-
 	UILabel *titleLabel;
 	UISlider *unitSlider;
 	UISwitch *clearTextSwitch;
 	UIButton *unitTestButton;
 	UITextView *logTextView;
-	
-	PhDSearchXmlParser *phDSearchXmlParser;
-	NSMutableArray *searchs;
-	
-	PhDMasterXmlParser *phDMasterXmlParser;
-	
-	//PhDinXmlStream *phDinXmlStream;
-	PhDinAllStream *phDinAllStream;
-	
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
@@ -35,8 +21,6 @@
 @property (nonatomic, retain) IBOutlet UISwitch *clearTextSwitch;
 @property (nonatomic, retain) IBOutlet UIButton *unitTestButton;
 @property (nonatomic, retain) IBOutlet UITextView *logTextView;
-
-@property (nonatomic, retain) NSMutableArray *searchs;
 
 - (IBAction)doUnitTestButton:(id)sender;
 - (IBAction)doExitAppButton:(id)sender; 

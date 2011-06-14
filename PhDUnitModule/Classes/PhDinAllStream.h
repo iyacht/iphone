@@ -30,12 +30,12 @@ typedef enum
 	PhDiASEnd
 } PhDiASStatus;
 
-@interface PhDinAllStream : PhDinStream 
-	<PhDinInitStreamDelegate, 
+@interface PhDinAllStream : PhDinStream
+	< PhDinInitStreamDelegate, 
 	PhDinHeadStreamDelegate, 
 	PhDinFlagStreamDelegate,
 	PhDinPHeadStreamDelegate,
-	PhDinPInfoStreamDelegate> {
+	PhDinPInfoStreamDelegate > {
 	PhDiASStatus phDiASStatus;
 	NSMutableData *cacheData;
 	
@@ -50,9 +50,6 @@ typedef enum
 		
 	PhDInt tmpImageLength;
 }
-
-//@property (nonatomic, assign) PhDInt totalKB;
-//@property (nonatomic, assign) PhDInt headKB;
 
 - (void)unitTest:(NSString *)path;
 - (id)initWithiASStatus:(PhDiASStatus)iASStatus initWithNeedLenth:(NSUInteger)iNeedLength;

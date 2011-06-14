@@ -14,7 +14,6 @@ static NSString *kName_WebSites = @"网址大全";
 
 @implementation PhDMasterXmlParser
 
-@synthesize currentString, xmlData, htmlData;
 @synthesize currentMaster;
 
 + (NSString *)parserName {
@@ -31,7 +30,7 @@ static NSString *kName_WebSites = @"网址大全";
 		findMatchSection = NO;
 		NSXMLParser *parser = [[NSXMLParser alloc] initWithData:xmlData];
 		parser.delegate = self;
-		self.currentString = [NSMutableString string];
+		currentString = [NSMutableString string];
 		[parser parse];
 		[parser release]; 
     } 
@@ -39,9 +38,9 @@ static NSString *kName_WebSites = @"网址大全";
 	[htmlData appendString:@"</body></html>"];
 	NSString *fileName =[NSString stringWithFormat:@"%@/demo-%@.html",[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"],[masterArray  objectAtIndex: currentMaster]];//autorelease
 	[htmlData writeToFile:fileName atomically:NO encoding:NSUTF8StringEncoding error:nil];
-	[self.htmlData release];
-    self.currentString = nil;
-    self.xmlData = nil;
+	[htmlData release];
+	currentString = nil;
+	xmlData = nil;
 }
 
 - (void)dealloc {

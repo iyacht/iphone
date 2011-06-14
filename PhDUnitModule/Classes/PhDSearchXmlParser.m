@@ -44,18 +44,17 @@ static NSUInteger kCountForNotification = 0;
     xmlData = [NSMutableData dataWithContentsOfFile:path];  
     if (nil != xmlData) { 
 		parsedSearchs = [[NSMutableArray alloc] init];
-		NSLog(@"Count %d",self.parsedSearchs.count);
 		NSXMLParser *parser = [[NSXMLParser alloc] initWithData:xmlData];
 		parser.delegate = self;
-		self.currentString = [NSMutableString string];
+		currentString = [NSMutableString string];
 		[parser parse];
 		[self parseEnded];
 		[parser release]; 
     } 
 
-    self.currentString = nil;
-    self.xmlData = nil;
-    self.currentSearch = nil;
+    currentString = nil;
+    xmlData = nil;
+    currentSearch = nil;
 }
 
 - (void)dealloc {
@@ -75,7 +74,6 @@ static NSUInteger kCountForNotification = 0;
 - (void)parsedSearch:(Search *)search {
 	NSLog(@"%@",search);
     [self.parsedSearchs addObject:search];
-	NSLog(@"Count %d",self.parsedSearchs.count);
     if (self.parsedSearchs.count > kCountForNotification) {
         if (self.delegate != nil && [self.delegate respondsToSelector:@selector(parser:didParseSearchs:)]) {
             [self.delegate parser:self didParseSearchs:parsedSearchs];

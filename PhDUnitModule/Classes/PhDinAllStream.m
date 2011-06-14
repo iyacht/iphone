@@ -10,7 +10,6 @@
 #include <zlib.h>
 
 @implementation PhDinAllStream
-//@synthesize totalKB,headKB;
 
 + (NSString *)parserName {
     return @"PhDinAllStream";
@@ -22,8 +21,6 @@
 		[self initWithiASStatus:PhDiASInit initWithNeedLenth:10];
 		[self parser:xmlData];
     }
-	
-	[xmlData release];
 }
 
 - (id)initWithiASStatus:(PhDiASStatus)iASStatus initWithNeedLenth:(NSUInteger)iNeedLength {
@@ -48,7 +45,9 @@
 		PhDinInitStream *phDinInitStream = [[PhDinInitStream alloc] init];
 		phDinInitStream.delegate = self;
 		[phDinInitStream parser:cacheData];
+		[phDinInitStream release];
 		[self setiASStatus:PhDiASHead setNeedLenth:headKB];
+
 		return YES;
 	} else if (PhDiASHead == phDiASStatus) {
 		PhDinHeadStream *phDinHeadStream = [[PhDinHeadStream alloc] init];
@@ -56,11 +55,10 @@
 		if (totalKB > headKB) /*gzip*/{
 			NSData *headData = [self decompress:cacheData];
 			[phDinHeadStream parser:headData];
-			[headData release];
 		} else {
 			[phDinHeadStream parser:cacheData];
 		}
-		
+		[phDinHeadStream release];
 		[self setiASStatus:PhDiASFlag setNeedLenth:1];
 		return YES;
 	} else if (PhDiASXml == phDiASStatus) {
@@ -68,39 +66,43 @@
 		if (contentLength > compressLength) /*gzip*/{
 			NSData *xmlData = [self decompress:cacheData];
 			[phDinXmlStream parser:xmlData];
-			[xmlData release];
 		} else {
 			[phDinXmlStream parser:cacheData];
 		}
+		[phDinXmlStream release];
 		[self setiASStatus:PhDiASFlag setNeedLenth:1];
 		return YES;
 	} else if (PhDiASPHead == phDiASStatus) {
 		PhDinPHeadStream *phDinPHeadStream = [[PhDinPHeadStream alloc] init];
 		phDinPHeadStream.delegate = self;
 		[phDinPHeadStream parser:cacheData];
-		
+		[phDinPHeadStream release];
 		[self setiASStatus:PhDiASPInfo setNeedLenth:9];
 		return YES;
 	} else if (PhDiASPInfo == phDiASStatus) {
 		PhDinPInfoStream *phDinPInfoStream = [[PhDinPInfoStream alloc] init];
 		phDinPInfoStream.delegate = self;
 		[phDinPInfoStream parser:cacheData];
+		[phDinPInfoStream release];
 		[self setiASStatus:PhDiASPict setNeedLenth:tmpImageLength];
 		return YES;
 	} else if (PhDiASPict == phDiASStatus) {
 		PhDinPictStream *phDinPictStream = [[PhDinPictStream alloc] init];
 		[phDinPictStream parser:cacheData];
 		totalData = totalData - 9 - tmpImageLength;
+		NSLog(@"totalData:\t%d",totalData);
+		[phDinPictStream release];
 		if (totalData) {
 			[self setiASStatus:PhDiASPInfo setNeedLenth:9];
 		} else {
 			[self setiASStatus:PhDiASEnd setNeedLenth:0];
-		}		
+		}	
 		return YES;
 	} else if (PhDiASFlag == phDiASStatus) {
 		PhDinFlagStream *phDinFlagStream = [[PhDinFlagStream alloc] init];
 		phDinFlagStream.delegate = self;
 		[phDinFlagStream parser:cacheData];
+		[phDinFlagStream release];
 		if (flag == 12)//ui
 		{
 			;
@@ -236,10 +238,11 @@
 	totalData = iTotalData;
 }
 
-#pragma mark PhDinPHeadStreamDelegate
+#pragma mark PhDinPInfoStreamDelegate
 - (void)setImageLength:(PhDInt)iImageLength {
 	tmpImageLength = iImageLength;
 }
+
 #pragma mark gzip interface
 - (NSData *)decompress:(NSData *)Data
 {

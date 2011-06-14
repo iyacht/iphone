@@ -12,7 +12,7 @@ static NSUInteger PhDimageNumber = -1;
 @implementation PhDinPictStream
 - (NSUInteger) getImageNumber {
 	PhDimageNumber = PhDimageNumber + 1;
-	if (0xEFFFFFFF ==PhDimageNumber) {
+	if (0xEFFFFFFF == PhDimageNumber) {
 		PhDimageNumber = 0;
 	}
 	return PhDimageNumber;
@@ -21,7 +21,6 @@ static NSUInteger PhDimageNumber = -1;
 - (BOOL)parserInternal {
 	NSUInteger imageNumber = [self getImageNumber];
 	NSString *fileName =[NSString stringWithFormat:@"%@/%08d.jpg",[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"],imageNumber];//autorelease
-	//dump image
 	[stream writeToFile:fileName atomically:NO];
 
 	return YES;

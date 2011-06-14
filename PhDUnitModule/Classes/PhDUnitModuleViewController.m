@@ -7,6 +7,8 @@
 //
 
 #import "PhDUnitModuleViewController.h"
+#import "PhDMasterXmlParser.h"
+#import "PhDinAllStream.h"
 
 #define MINI_SLIDERVALUE 0
 #define MAX_SLIDERVALUE 5
@@ -21,44 +23,34 @@
 @synthesize unitTestButton;
 @synthesize logTextView;
 
-@synthesize searchs;
-
 - (void) test0 {
 	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"search_engine" ofType:@"xml"];
-	phDSearchXmlParser = [[PhDSearchXmlParser alloc] init];
-	phDSearchXmlParser.delegate = self;
-	
 	[logTextView setText:[PhDSearchXmlParser parserName]];
-	
+	PhDSearchXmlParser *phDSearchXmlParser = [[PhDSearchXmlParser alloc] init];
+	phDSearchXmlParser.delegate = self;
 	[phDSearchXmlParser unitTest:filePath];
 	[phDSearchXmlParser release];
 }
 
 - (void) test1:(NSUInteger)index {
 	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"ui_master" ofType:@"xml"];
+	PhDMasterXmlParser *phDMasterXmlParser;
 	phDMasterXmlParser = [[PhDMasterXmlParser alloc] init];
 	phDMasterXmlParser.currentMaster = index;
 	
 	[logTextView setText:[PhDMasterXmlParser parserName]];
 	
 	[phDMasterXmlParser unitTest:filePath];
-	[unitTestButton setTitle:@"开始测试" forState:UIControlStateNormal];
+	[phDMasterXmlParser release];
 }
 
 - (void) test2 {
-#if 0
-	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"phd"];
-	phDinXmlStream = [[PhDinXmlStream alloc] init];	
-	[logTextView setText:[PhDinXmlStream parserName]];	
-	[phDinXmlStream unitTest:filePath];
-	[phDinXmlStream release];
-#else
+	//return;
 	NSString *filePath = [[NSBundle mainBundle] pathForResource:@"sample" ofType:@"pha"];
-	phDinAllStream = [[PhDinAllStream alloc] init];	
-	[logTextView setText:[PhDinAllStream parserName]];	
+	[logTextView setText:[PhDinAllStream parserName]];
+	PhDinAllStream *phDinAllStream = [[PhDinAllStream alloc] init];		
 	[phDinAllStream unitTest:filePath];
 	[phDinAllStream release];
-#endif
 }
 
 - (IBAction) doUnitTestButton:(id)sender {
@@ -72,13 +64,6 @@
 	
 	[unitTestButton setTitle:@"停止测试" forState:UIControlStateNormal];
 	
-	// Allocate the array for song storage, or empty the results of previous parses
-    if (searchs == nil) {
-        self.searchs = [NSMutableArray array];
-    } else {
-        [searchs removeAllObjects];
-    }
-
 	int testcase = (int)unitSlider.value;
 	switch (testcase) {
 		case 0:
@@ -96,9 +81,11 @@
 			break;
 	}
 	
+	[unitTestButton setTitle:@"开始测试" forState:UIControlStateNormal];
 }
 
 - (IBAction)doExitAppButton:(id)sender {
+	[self dealloc];
 	exit(0);
 	//no use @"被appstore拒"
 	//[[UIApplication sharedApplication] respondsToSelector:@selector(terminate)];
@@ -112,38 +99,36 @@
 	[newText release];
 	
 }
-#pragma mark <PhDSearchXmlParser> Implementation
 
+#pragma mark <PhDSearchXmlParser> Implementation
 - (void)parserDidEndParsingData:(PhDSearchXmlParser *)parser {
 	logTextView.text = [NSString stringWithFormat:@"%@ %@", logTextView.text, @"结束测试" ];
 	[unitTestButton setTitle:@"开始测试" forState:UIControlStateNormal];
 }
 
 - (void)parser:(PhDSearchXmlParser *)parser didParseSearchs:(NSArray *)parsedSearchs {
-    [searchs addObjectsFromArray:parsedSearchs];
-    NSLog(@"nil response");
-	logTextView.text = [NSString stringWithFormat:@"%@ %d", logTextView.text, searchs.count ]; 
+	logTextView.text = [NSString stringWithFormat:@"%@ %d", logTextView.text, parsedSearchs.count ]; 
 }
 
 - (void)parser:(PhDSearchXmlParser *)parser didFailWithError:(NSError *)error {
     // handle errors as appropriate to your application...
 }
 /*
-// The designated initializer. Override to perform setup that is required before the view is loaded.
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-*/
+ // The designated initializer. Override to perform setup that is required before the view is loaded.
+ - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+ self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+ if (self) {
+ // Custom initialization
+ }
+ return self;
+ }
+ */
 
 /*
-// Implement loadView to create a view hierarchy programmatically, without using a nib.
-- (void)loadView {
-}
-*/
+ // Implement loadView to create a view hierarchy programmatically, without using a nib.
+ - (void)loadView {
+ }
+ */
 
 
 //*
@@ -158,7 +143,7 @@
 	unitSlider.minimumValue = MINI_SLIDERVALUE;
 	unitSlider.maximumValue = MAX_SLIDERVALUE;
 	unitSlider.value = CUR_SLIDERVALUE;
-
+	
 	logTextView.editable = NO;
 	
     [super viewDidLoad];
@@ -167,12 +152,12 @@
 
 
 /*
-// Override to allow orientations other than the default portrait orientation.
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-*/
+ // Override to allow orientations other than the default portrait orientation.
+ - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+ // Return YES for supported orientations
+ return (interfaceOrientation == UIInterfaceOrientationPortrait);
+ }
+ */
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
@@ -193,9 +178,7 @@
 	[clearTextSwitch release];
 	[unitTestButton release];
 	[logTextView release];
-
-	[phDSearchXmlParser release];
-	[searchs release];
+	
     [super dealloc];
 }
 

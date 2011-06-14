@@ -18,7 +18,7 @@
 	PhDInt OneImageLength = [self readLong];
 	PhDByte reserver = [self readByte];
 
-	NSLog(@"picDataID:%08X\nOneImageLength:%d\nreserver:%d\n",picDataID, OneImageLength, reserver);
+	NSLog(@"\npicDataID:\t0x%08X\nOneImageLength:\t%d\nreserver:\t%d\n",picDataID, OneImageLength, reserver);
 	[delegate setImageLength:OneImageLength];
 	
 	return YES;

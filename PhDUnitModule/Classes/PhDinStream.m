@@ -168,11 +168,6 @@
 }
 
 - (void)dealloc {
-	if (nil != stream)
-	{
-		[stream release];
-	}
-
 	[super dealloc];
 }
 @end

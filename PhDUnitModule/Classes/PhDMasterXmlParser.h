@@ -20,9 +20,6 @@
 	NSUInteger currentMaster;
 }
 
-@property (nonatomic, retain) NSMutableString *currentString;
-@property (nonatomic, retain) NSMutableData *xmlData;
-@property (nonatomic, retain) NSMutableString *htmlData;
 @property (nonatomic, assign) NSUInteger currentMaster;
 
 + (NSString *)parserName;
